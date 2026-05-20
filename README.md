@@ -21,19 +21,31 @@ These started life as named personas in an AI-first development bootcamp. The na
 
 ## Install
 
-Copy the agent files into your user-level Claude Code agents directory. They'll be available across every project on this machine.
+This repo is the source of truth for the agent definitions. `~/.claude/agents/` holds symlinks pointing at the files here, so edits to the repo are instantly live (after a Claude Code session restart).
+
+### First time on a machine
 
 ```bash
-mkdir -p ~/.claude/agents
-cp global/*.md ~/.claude/agents/
-
-# Verify
-ls ~/.claude/agents/
+git clone git@github.com:dbean10/claude-agents.git ~/Projects/claude-agents
+cd ~/Projects/claude-agents
+make install
 ```
 
-Then **restart any active Claude Code session** so the new agents are loaded. Subagents created or modified on disk only take effect after a restart.
+`make install` creates `~/.claude/agents/` if needed and symlinks every `global/*.md` file. It's idempotent — safe to re-run.
 
-Alternatively, you can verify they loaded by running `/agents` inside Claude Code — your new agents should appear in the list.
+Then **restart any active Claude Code session** so the new agents are loaded. Verify by running `/agents` inside Claude Code — the ten new agents should appear under "User agents".
+
+### Make targets
+
+| Command | What it does |
+|---|---|
+| `make install` | Symlink every agent into `~/.claude/agents/` |
+| `make uninstall` | Remove the symlinks (leaves the repo untouched) |
+| `make verify` | Show repo files vs. installed symlinks |
+
+### Iterating on agents
+
+Edit any file in `global/`. The change is instantly live for new Claude Code sessions (restart any open session to pick it up). Changes get committed to this repo via PR — branch protection requires a passing CI check and rejects direct pushes to main.
 
 ## How to invoke
 
