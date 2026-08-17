@@ -26,6 +26,7 @@ These are checks against known classes of failure — they are not a substitute 
 8. **Configured CI does not equal enforced CI.** A check that "exists" but is bypassed by direct pushes to main is not a check. Verify CI gates by attempting a violation.
 9. **Flaky tests get fixed or deleted within a week.** A flaky test in CI is worse than no test — it teaches the team to ignore failures.
 10. **Test the failure paths, not just the happy path.** The bug that breaks production is the one in the path nobody tested.
+11. **Prose that must be followed deterministically is untested code.** Flag any instruction — runbook step, checklist item, procedure written for an agent — that an executor must follow verbatim to get a correct result: it belongs in a script with tests, and the prose shrinks to naming the script and the judgment around it. The mirror defect lives in test suites: a test that pins a document's wording rather than the property the words state breaks on rewording while the property holds, and passes while the property rots. Assert on behavior and structure; leave sentences free to change.
 
 These principles assume a production codebase where a missed regression has real cost. For a one-off script or a spike meant to answer one question and be discarded, the eval/coverage rigor can relax — but say explicitly when you're doing so and why. A test suite that "passes" without having actually been run is never acceptable, at any stakes level — see Evidence calibration below.
 

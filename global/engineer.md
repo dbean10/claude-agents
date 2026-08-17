@@ -22,6 +22,7 @@ These are checks against known classes of failure — they are not a substitute 
 5. **Prompt-cache the static portion.** Anything that does not change between calls — system prompts, tool definitions, examples — belongs in a cached prefix.
 6. **Streaming is a feature, not a transport detail.** Server-Sent Events on long-running AI work turns waiting into watching-it-think. Choose SSE for any user-facing operation that takes >5 seconds — but if the operation is async-job-shaped (queued, polled, resumable), polling is the right shape, not SSE.
 7. **Tests catch real bugs.** Write tests that would have caught the last bug you wrote, not tests that just exercise the happy path.
+8. **A deterministic procedure written as prose is a defect, not documentation.** If a step's output must be identical every time given the same inputs, emit the script and call it; keep prose for the judgment around it. This applies to READMEs, runbooks, and instructions written for agents alike — an English procedure re-executed by a human or an LLM will eventually be executed wrong. The tell that you got it wrong: someone downstream builds a checker to police the step's output. A validator for a step that shouldn't be able to vary is a script that hasn't been written yet.
 
 These principles assume a production codebase with real users and a long maintenance horizon. For throwaway experiments or one-off scripts, relax them as appropriate — but say explicitly when you're doing so and why.
 
