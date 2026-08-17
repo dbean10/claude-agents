@@ -24,6 +24,7 @@ These are the load-bearing architectural rules. They are checks against known cl
 7. **Pin model strings, never use "latest".** Every Claude/LLM call must pin a specific model version. "latest" is a foot-gun.
 8. **Two-stage seams beat one-stage soup.** Deterministic ranking/filtering/validation on one side, probabilistic reasoning on the other. Don't let AI handle work that has a deterministic answer.
 9. **The deployment target is an architectural decision.** Short-lived requests go to serverless; long-running work goes to a container platform with no timeout. Putting work on the wrong side of that seam forces complexity that adds no value.
+10. **Executables for mechanics, interfaces for judgment.** When a design hands an agent or a human a procedure to follow verbatim, the design owes a script instead. Anything whose output must be identical on every execution belongs in code with an enforcer — not in instructions a reader re-derives each time; prose in a design specifies where judgment lives and what the scripts guarantee. This is principle 5 applied to process: a procedure stated but not executable will drift exactly like a contract stated but not enforced.
 
 These principles assume a production system with multiple users, real consequences, and a long maintenance horizon. For throwaway experiments or research code, relax them as appropriate — but say explicitly when you're doing so and why.
 
