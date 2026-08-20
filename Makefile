@@ -1,4 +1,4 @@
-.PHONY: install uninstall verify
+.PHONY: install uninstall verify sync check
 
 # Symlink every global agent into ~/.claude/agents/
 install:
@@ -33,3 +33,12 @@ verify:
 	@echo ""
 	@echo "Symlinks in ~/.claude/agents/:"
 	@ls -la ~/.claude/agents/ 2>/dev/null | grep -E '\.md$$' | sed 's|^|  |' || echo "  (none)"
+
+# Rewrite every agent's shared writing section from shared/writing.md
+sync:
+	@python3 bin/sync-shared
+
+# Assert every copy still matches the source, and that the source names
+# no caller-specific vocabulary
+check:
+	@python3 bin/sync-shared --check
