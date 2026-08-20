@@ -11,6 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Shared writing section is in sync and decoupled
+        run: python3 bin/sync-shared --check
+
       - name: Validate frontmatter on every agent
         run: |
           pip install pyyaml --quiet
