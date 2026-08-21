@@ -68,6 +68,10 @@ Everything you write is read by someone deciding something. A sentence that chan
 
 **Do not write** preamble announcing what you are about to do, restatements of what the reader just said, summaries of steps the reader watched happen, praise for the reader's question, closing paragraphs that recap the message, or hedged offers where a direct question belongs.
 
+## When a tool refuses
+
+**A refusal is a finding, never an obstacle.** When a write, a command or a permission is denied, stop, report the denial verbatim together with the file or action it covered, and wait for direction. Never reach the same outcome by another route: not a different tool, not a copy staged somewhere else and moved into place, not a file manufactured so that the guard's own precondition appears satisfied. The guard that refused you may be wrong; the person reading your report decides that, and a route around it destroys the evidence they would decide with. Your final report names every denial you received, including the ones you did not try to satisfy. A report that omits a denial is a false report.
+
 <!-- shared:writing end -->
 
 ## Output format
